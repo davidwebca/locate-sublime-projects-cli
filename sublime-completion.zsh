@@ -7,7 +7,7 @@ sp() {
 
 	# The space between the name of the file here is only
 	# to be as fuzzy as spotlight (mdfind) cam
-	files=($(mdfind -name "$1 .sublime-project"))
+	files=($(mdfind "kMDItemAlternateNames == '$1*.sublime-project'"))
 
 	if [ ${#files} -eq 0 ]; then
 		echo $fg[red] "No project found";
@@ -35,7 +35,7 @@ spo(){
 
 	# The space between the name of the file here is only
 	# to be as fuzzy as spotlight (mdfind) cam
-	files=($(mdfind -name "$1 .sublime-project"))
+	files=($(mdfind "kMDItemAlternateNames == '$1*.sublime-project'"))
 
 	if [ ${#files} -eq 0 ]; then
 		echo $fg[red] "No project found";
@@ -63,7 +63,7 @@ spcd(){
 	
 	# The space between the name of the file here is only
 	# to be as fuzzy as spotlight (mdfind) cam
-	files=($(mdfind -name "$1 .sublime-project"))
+	files=($(mdfind "kMDItemAlternateNames == '$1*.sublime-project'"))
 
 	if [ ${#files} -eq 0 ]; then
 		echo $fg[red] "No project found";
@@ -92,7 +92,7 @@ _subl_complete() {
 
 	# @todo : implement cache
 	# if _cache_invalid sp_completion; then
-		files=( $(mdfind -name "$words[2] .sublime-project") )
+		files=( $(mdfind "kMDItemAlternateNames == '$words[2]*.sublime-project'") )
 		# _store_cache sp_completion files
 	# else
 		# files=_retrieve_cache
